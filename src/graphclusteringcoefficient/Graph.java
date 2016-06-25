@@ -80,7 +80,7 @@ public class Graph extends ArrayList<Edge> {
     
     public int getNumTriangles(ArrayList<Edge> possibleConnections){
         int count=0;
-        //mou dineis oles tis pithanes akmes twn filwn
+        //mou dineis oles tis pithanes akmes twn filw
         
         for(Edge s:possibleConnections){
             for(Edge t:this){
