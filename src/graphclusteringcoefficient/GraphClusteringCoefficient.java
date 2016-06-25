@@ -19,7 +19,8 @@ public class GraphClusteringCoefficient {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        int max_degree_node=0,vertex=0;
+        int max_degree_node=0,vertex=0,max_connections_for_all_the_graph=0,max_triangles_for_all_the_graph=0;
+        float globalClusteringCoefficient;
         Graph g=Graph.loadFile();
         HashSet<Integer> nodes=g.getNodes();
         System.out.println("Number of nodes:"+nodes.size());
@@ -35,6 +36,8 @@ public class GraphClusteringCoefficient {
             int maxConnections=possibleConnections.size();
             System.out.println("Ta possible connections tou komvou "+targetNode+" einai: "+maxConnections);
             int numTriangles=g.getNumTriangles(possibleConnections);
+            max_connections_for_all_the_graph=max_connections_for_all_the_graph+maxConnections;
+            max_triangles_for_all_the_graph=max_triangles_for_all_the_graph+numTriangles;
             System.out.println("O arithmos twn pragmatikwn trigwnwn tou komvou "+targetNode+" einai: "+numTriangles);
             double cf=0;
             if ( maxConnections !=0){
@@ -46,6 +49,10 @@ public class GraphClusteringCoefficient {
             System.out.println("Local clustering coefficient tou komvou "+targetNode+":"+cf);
         }
         System.out.println("\n\n\nMax degree node:"+vertex+" equals with:"+max_degree_node);
+        globalClusteringCoefficient=((float)(max_triangles_for_all_the_graph*3)/((float)max_connections_for_all_the_graph));
+        System.out.println("The number of triangles in the whole graph is equal with:"+max_triangles_for_all_the_graph);
+        System.out.println("The total number of triplets both open and closed is equal with:"+max_connections_for_all_the_graph);
+        System.out.println("\n\nGlobal clustering coefficient equals with:"+globalClusteringCoefficient);
     }
     
 }
