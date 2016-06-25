@@ -19,11 +19,17 @@ public class GraphClusteringCoefficient {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+        int max_degree_node=0,vertex=0;
         Graph g=Graph.loadFile();
         HashSet<Integer> nodes=g.getNodes();
         System.out.println("Number of nodes:"+nodes.size());
+        //gia kathe komvo ksehorista twra
         for ( Integer targetNode:nodes){
             HashSet<Integer> friends=g.getFriends(targetNode);
+            if ( friends.size()>max_degree_node){
+                max_degree_node=friends.size();
+                vertex=targetNode;
+            }
             System.out.println("\n\nNode: "+targetNode+" has "+friends.size()+" friends");
             ArrayList <Edge> possibleConnections= g.getPossibleConnections(friends);
             int maxConnections=possibleConnections.size();
@@ -39,6 +45,7 @@ public class GraphClusteringCoefficient {
             }
             System.out.println("Local clustering coefficient tou komvou "+targetNode+":"+cf);
         }
+        System.out.println("\n\n\nMax degree node:"+vertex+" equals with:"+max_degree_node);
     }
     
 }

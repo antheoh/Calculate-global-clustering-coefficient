@@ -41,6 +41,8 @@ public class Graph extends ArrayList<Edge> {
     }
     
     
+    
+    //hashset gia na einai unique
     public HashSet<Integer> getNodes() {
         HashSet<Integer> nodes=new HashSet<>();
         for ( Edge e:this){
@@ -92,6 +94,8 @@ public class Graph extends ArrayList<Edge> {
         }
         return count;
     }
+    
+    
     
     
     
