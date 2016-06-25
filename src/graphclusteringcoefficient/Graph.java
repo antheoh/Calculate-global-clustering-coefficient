@@ -22,15 +22,15 @@ import java.util.logging.Logger;
 public class Graph extends ArrayList<Edge> {
     public static Graph loadFile() throws FileNotFoundException, IOException{
         Graph g=new Graph();
-        BufferedReader br=new BufferedReader(new FileReader(new File("/home/anastasis/Desktop/test.txt")));
+        BufferedReader br=new BufferedReader(new FileReader(new File("roadNet-CA.txt")));
         String line;
-        try {
+        try {            
             while (( line = br.readLine()) !=null ) {
+                line=line.trim();
+                String[] elements=line.split("\t");
                 
-                String[] elements=line.split(" ");
-                
-                int nodeA=Integer.parseInt(elements[0]);
-                int nodeB=Integer.parseInt(elements[1]);
+                int nodeA=Integer.parseUnsignedInt(elements[0].trim());                
+                int nodeB=Integer.parseUnsignedInt(elements[1].trim());
                 Edge e=new Edge(nodeA,nodeB);        
                 g.add(e);
             }
