@@ -31,7 +31,7 @@ public class GraphClusteringCoefficient {
                 max_degree_node=friends.size();
                 vertex=targetNode;
             }
-            System.out.println("\n\nNode: "+targetNode+" has "+friends.size()+" friends");
+            System.out.println("\n\nNode: "+targetNode+" has "+friends.size()+" neighbors");
             ArrayList <Edge> possibleConnections= g.getPossibleConnections(friends);
             int maxConnections=possibleConnections.size();
             System.out.println("Ta possible connections tou komvou "+targetNode+" einai: "+maxConnections);
@@ -49,7 +49,7 @@ public class GraphClusteringCoefficient {
             System.out.println("Local clustering coefficient tou komvou "+targetNode+":"+cf);
         }
         System.out.println("\n\n\nMax degree node:"+vertex+" equals with:"+max_degree_node);
-        globalClusteringCoefficient=((float)(max_triangles_for_all_the_graph*3)/((float)max_connections_for_all_the_graph));
+        globalClusteringCoefficient=((float)(max_triangles_for_all_the_graph)/((float)max_connections_for_all_the_graph));
         System.out.println("The number of triangles in the whole graph is equal with:"+max_triangles_for_all_the_graph);
         System.out.println("The total number of triplets both open and closed is equal with:"+max_connections_for_all_the_graph);
         System.out.println("\n\nGlobal clustering coefficient equals with:"+globalClusteringCoefficient);

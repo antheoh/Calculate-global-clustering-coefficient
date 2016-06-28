@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class Graph extends ArrayList<Edge> {
     public static Graph loadFile() throws FileNotFoundException, IOException{
         Graph g=new Graph();
-        BufferedReader br=new BufferedReader(new FileReader(new File("roadNet-CA.txt")));
+        BufferedReader br=new BufferedReader(new FileReader(new File("test.edges")));
         String line;
         try {            
             while (( line = br.readLine()) !=null ) {
